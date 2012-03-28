@@ -1,0 +1,1 @@
+python C:\Python25\Scripts\django-admin.py startproject mysite
