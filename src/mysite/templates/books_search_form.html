@@ -1,0 +1,11 @@
+<html>
+<head><title>Search</title></head>
+<body>
+<p>Book Search</p>
+{# I created the view in /books/search, not /search, which reflects this change of action #}
+<form action="/books/search" method="get">
+       <input type="text" name="q">
+       <input type="submit" value="Search">
+</form>
+</body>
+<html>

@@ -63,3 +63,23 @@ def hours_ahead_render_to_response(request, offset):
         raise Http404()
     dt = datetime.datetime.now() + datetime.timedelta(hours=offset)
     return render_to_response("hours_ahead_get_template.html",{"offset":offset,"dt":dt})
+
+def display_meta(request):
+    """This function displays the META data about an HTTP request"""
+    values = request.META.items()
+    values.sort()
+    html = []
+    for k,v in values:
+        html.append("<tr><td>%s</td><td>%s</td></tr>" % (k,v))
+    return HttpResponse('<table>%s</table>' % '\n'.join(html))
+
+def display_meta_render_to_response(request):
+    """This function is the same as display_meta, but uses a template for the html"""
+    values = request.META.items()
+    values.sort()
+    return render_to_response("display_meta.html",{"values":values,
+                                                   "path":request.path,
+                                                   "host":request.get_host(),
+                                                   "fullpath":request.get_full_path(),
+                                                   "secure":request.is_secure()
+                                                   })

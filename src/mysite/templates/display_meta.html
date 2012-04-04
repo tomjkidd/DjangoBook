@@ -1,0 +1,13 @@
+<html><body>
+<p>
+request.path: {{ path }}<br>
+request.get_host(): {{ host }}<br>
+request.get_full_path(): {{ fullpath }}<br>
+request.is_secure(): {{ secure }}</p>
+<table>
+{% for v in values %}
+{# v.0 and v.1 access a tuple representing a dictionary key and value, respectively #}
+<tr><td>{{ v.0 }}</td><td>{{ v.1 }}</td></tr>
+{% endfor %}
+</table>
+</body></html>
